@@ -152,7 +152,7 @@ class Htmltopdf_model extends CI_Model
 
 
 
-	$output = $key2.'<html>
+	$output = '<html>
 		<head>
 
 		<link rel="preconnect" href="https://fonts.gstatic.com">
@@ -225,19 +225,19 @@ class Htmltopdf_model extends CI_Model
 		<table style="width:100%;"  cellspacing="5" cellpadding="5">
             <tr>
 				<td width="30%" style="">
-				<img style="width: 220px;border-radius: 75px 75px 75px 75px;margin-top: 5px;box-shadow: 0 10px 16px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%) !important;" src="'.base_url().'assets/images/profile/'.$row->images.'">
+				<img style="width: 220px;border-radius: 75px 75px 75px 75px;margin-top: 5px;box-shadow: 0 10px 16px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%) !important;" src="'.base_url().'assets/images/profile/'.$val2['images'].'">
 				 </td>
 				<td width="70%" style="">
 				<div style="position: absolute;width:500px;left: 48%;top:5%">
-					<span style="font-size: 32px;line-height: 1;padding: 2px 0;font-weight: 500;color: #e60b0b;">&nbsp;&nbsp;'.$row->CustomerName.'</span>
+					<span style="font-size: 32px;line-height: 1;padding: 2px 0;font-weight: 500;color: #e60b0b;">&nbsp;&nbsp;'.$val2['CustomerName'].'</span>
 					<table>
 					<tr>
 					<td>
-					<img style="width: 100px;border-radius: 50%;margin-top: 0px;box-shadow: 0 10px 16px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%) !important;" src="'.base_url().'assets/images/logo/'.$row->CompanyLogo.'"></td>
+					<img style="width: 100px;border-radius: 50%;margin-top: 0px;box-shadow: 0 10px 16px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%) !important;" src="'.base_url().'assets/images/logo/'.$val2['CompanyLogo'].'"></td>
 					<td><span style="color:gray"></span></td>
 					<td> <span style="color:black;font-weight: 400;font-size:20px;">  
 
-                  <div>'.$val2['spec'].'<br>'.$val2['CustomerID']CompanyName.'</span></div>
+                  <div>'.$val2['spec'].'<br>'.$val2['CustomerID'].'</span></div>
 
 
 					</td>
@@ -247,8 +247,8 @@ class Htmltopdf_model extends CI_Model
 					<table>
 					<td>
 					<a href="callto:1234567"><span><img style="width:150px;" src="http://192.168.60.251/htmltopdf/assets/images/icons/call.png"></span></a>
-					<a href="mailto:'.$row->email.'"><span><img style="width:150px;" src="http://192.168.60.251/htmltopdf/assets/images/icons/email.png"></span></a>
-					<a href="http://'.$row->website.'" target="_blank"><span><img style="width:150px;" src="http://192.168.60.251/htmltopdf/assets/images/icons/web.png"></span></a>
+					<a href="mailto:'.$val2['email'].'"><span><img style="width:150px;" src="http://192.168.60.251/htmltopdf/assets/images/icons/email.png"></span></a>
+					<a href="http://'.$val2['website'].'" target="_blank"><span><img style="width:150px;" src="http://192.168.60.251/htmltopdf/assets/images/icons/web.png"></span></a>
 					</td>
 					</table>
 </div>
