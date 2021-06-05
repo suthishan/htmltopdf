@@ -138,13 +138,7 @@ class Htmltopdf_model extends CI_Model
 
 				
 
-				foreach($data1 as $key2=>$val2){
-					// echo '<pre>';
-					// print_r($val2['CustomerID']);
-					// // echo '</pre>';
-					// // die;
-
-					 $row[]=$val2['CustomerID'];
+				
 
 					//  echo '<pre>';
 					//  print_r($val2);
@@ -214,24 +208,28 @@ class Htmltopdf_model extends CI_Model
 				<img src="images/BNI-Kings-background.jpg" height="100%" width="100%" />
 			</div>
 	
-			<main> 
+			<main>';
+		//  foreach($data->result() as $row)
+		//  {
+			//  echo '<pre>';
+			//  print_r($row);
+			//  echo '</pre>';
+			foreach($data1 as $key2=>$val2){
+				// echo '<pre>';
+				// print_r($val2['CustomerID']);
+				// // echo '</pre>';
+				// // die;
 
-
-
-
-		<table style="width:100%;"  cellspacing="5" cellpadding="5">';
-		 foreach($data->result() as $row)
-		 {
+				 $row[]=$val2['CustomerID'];
 		$output .= '
-
+		<table style="width:100%;"  cellspacing="5" cellpadding="5">
             <tr>
 				<td width="30%" style="">
 				<img style="width: 220px;border-radius: 75px 75px 75px 75px;margin-top: 5px;box-shadow: 0 10px 16px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%) !important;" src="'.base_url().'assets/images/profile/'.$row->images.'">
 				 </td>
 				<td width="70%" style="">
 				<div style="position: absolute;width:500px;left: 48%;top:5%">
-					<span style="font-size: 32px;line-height: 1;padding: 2px 0;font-weight: 500;color: #e60b0b;">&nbsp;&nbsp;'.$key2.'</span>
-
+					<span style="font-size: 32px;line-height: 1;padding: 2px 0;font-weight: 500;color: #e60b0b;">&nbsp;&nbsp;'.$row->CustomerName.'</span>
 					<table>
 					<tr>
 					<td>
@@ -239,7 +237,7 @@ class Htmltopdf_model extends CI_Model
 					<td><span style="color:gray"></span></td>
 					<td> <span style="color:black;font-weight: 400;font-size:20px;">  
 
-                  <div>'.$row->spec.'<br>'.$row->CompanyName.'</span></div>
+                  <div>'.$val2['spec'].'<br>'.$val2['CustomerID']CompanyName.'</span></div>
 
 
 					</td>
@@ -265,16 +263,16 @@ class Htmltopdf_model extends CI_Model
 		<tr>
 			<td colspan="2" align="center"><img style="width:600px;" src="http://192.168.60.251/htmltopdf/assets/images/icons/line.jpg"></td>
 		</tr>
-		';
+		</table>';
 	}
-		$output .= '</table>
+		$output .= '
 		</main>
 		</body>
 	</html>';
 	//echo $output;
 
 		return $output;
-	}
+	
 		//echo $output;
 		
 	}
