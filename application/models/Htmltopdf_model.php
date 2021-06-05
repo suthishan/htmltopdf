@@ -226,7 +226,7 @@ class Htmltopdf_model extends CI_Model
 
             <tr>
 				<td width="30%" style="">
-				<img style="width: 220px;border-radius: 75px 75px 75px 75px;margin-top: 5px;box-shadow: 0 10px 16px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%) !important;" src="'.base_url().'assets/images/profile/'.$val2['images'].'">
+				<img style="width: 220px;border-radius: 75px 75px 75px 75px;margin-top: 5px;box-shadow: 0 10px 16px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%) !important;" src="'.base_url().'assets/images/profile/'.$row->images.'">
 				 </td>
 				<td width="70%" style="">
 				<div style="position: absolute;width:500px;left: 48%;top:5%">
@@ -235,7 +235,7 @@ class Htmltopdf_model extends CI_Model
 					<table>
 					<tr>
 					<td>
-					<img style="width: 100px;border-radius: 50%;margin-top: 0px;box-shadow: 0 10px 16px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%) !important;" src="'.base_url().'assets/images/logo/'.$val2['CompanyLogo'].'"></td>
+					<img style="width: 100px;border-radius: 50%;margin-top: 0px;box-shadow: 0 10px 16px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%) !important;" src="'.base_url().'assets/images/logo/'.$row->CompanyLogo.'"></td>
 					<td><span style="color:gray"></span></td>
 					<td> <span style="color:black;font-weight: 400;font-size:20px;">  
 
@@ -249,8 +249,8 @@ class Htmltopdf_model extends CI_Model
 					<table>
 					<td>
 					<a href="callto:1234567"><span><img style="width:150px;" src="http://192.168.60.251/htmltopdf/assets/images/icons/call.png"></span></a>
-					<a href="mailto:'.$key2.'"><span><img style="width:150px;" src="http://192.168.60.251/htmltopdf/assets/images/icons/email.png"></span></a>
-					<a href="http://'.$key2.'" target="_blank"><span><img style="width:150px;" src="http://192.168.60.251/htmltopdf/assets/images/icons/web.png"></span></a>
+					<a href="mailto:'.$row->email.'"><span><img style="width:150px;" src="http://192.168.60.251/htmltopdf/assets/images/icons/email.png"></span></a>
+					<a href="http://'.$row->website.'" target="_blank"><span><img style="width:150px;" src="http://192.168.60.251/htmltopdf/assets/images/icons/web.png"></span></a>
 					</td>
 					</table>
 </div>
