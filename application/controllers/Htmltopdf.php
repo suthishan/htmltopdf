@@ -55,7 +55,7 @@ class HtmltoPDF extends CI_Controller {
 
 	public function exportallpdfdetails()
 	{
-		//echo "hi";die;
+		// echo "hi";die;
 		//if($this->uri->segment(3))
 		//{
 
@@ -75,7 +75,12 @@ class HtmltoPDF extends CI_Controller {
 			//die;
 			//for($i=0;$i<5;$i++){
 			$html_content = '';
-			$html_content .= $this->htmltopdf_model->newdesign($customer_id);
+			$html_content .= $this->htmltopdf_model->newdesign();
+			// $customer_id
+			// echo '<pre>';
+			// print_r($html_content);
+			// echo '</pre>';
+			// die;
 			$this->pdf->set_paper("A4", "portrait");
 			$this->pdf->loadHtml($html_content);
 			$this->pdf->render();

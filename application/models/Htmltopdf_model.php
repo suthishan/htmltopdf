@@ -131,7 +131,7 @@ class Htmltopdf_model extends CI_Model
 		//echo $output;
 	}
 	function newdesign(){
-	//	echo "hi";die;
+		// echo "hi";die;
 				$data = $this->db->get('tbl_customer');
 				$data1 = $this->db->get('tbl_customer')->result_array();
 				$data_1=count($data1);
@@ -217,8 +217,8 @@ class Htmltopdf_model extends CI_Model
 			foreach($data1 as $key2=>$val2){
 				// echo '<pre>';
 				// print_r($val2['CustomerID']);
-				// // echo '</pre>';
-				// // die;
+				// echo '</pre>';
+				// die;
 
 				 $row[]=$val2['CustomerID'];
 		$output .= '
@@ -227,8 +227,7 @@ class Htmltopdf_model extends CI_Model
 				<td width="30%" style="">
 				<img style="width: 220px;border-radius: 75px 75px 75px 75px;margin-top: 5px;box-shadow: 0 10px 16px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%) !important;" src="'.base_url().'assets/images/profile/'.$val2['images'].'">
 				 </td>
-				<td width="70%" style="">
-				<div style="position: absolute;width:500px;left: 48%;top:5%">
+				<td width="70%"style="position: absolute;width:500px;left: 48%;top:5%">
 					<span style="font-size: 32px;line-height: 1;padding: 2px 0;font-weight: 500;color: #e60b0b;">&nbsp;&nbsp;'.$val2['CustomerName'].'</span>
 					<table>
 					<tr>
@@ -237,7 +236,7 @@ class Htmltopdf_model extends CI_Model
 					<td><span style="color:gray"></span></td>
 					<td> <span style="color:black;font-weight: 400;font-size:20px;">  
 
-                  <div>'.$val2['spec'].'<br>'.$val2['CustomerID'].'</span></div>
+                  <td style="font-weight:600">'.$val2['spec'].'<br>'.$val2['CompanyName'].'</span></td>
 
 
 					</td>
@@ -246,12 +245,11 @@ class Htmltopdf_model extends CI_Model
 
 					<table>
 					<td>
-					<a href="callto:1234567"><span><img style="width:150px;" src="http://192.168.60.251/htmltopdf/assets/images/icons/call.png"></span></a>
-					<a href="mailto:'.$val2['email'].'"><span><img style="width:150px;" src="http://192.168.60.251/htmltopdf/assets/images/icons/email.png"></span></a>
-					<a href="http://'.$val2['website'].'" target="_blank"><span><img style="width:150px;" src="http://192.168.60.251/htmltopdf/assets/images/icons/web.png"></span></a>
+					<a href="tel:'.$val2['mobile'].'" target="_blank"><span><img style="width:150px;" src="http://localhost/htmltopdf/assets/images/icons/call.png"></span></a>
+					<a href="mailto:'.$val2['email'].'" target="_blank"><span><img style="width:150px;" src="http://localhost/htmltopdf/assets/images/icons/email.png"></span></a>
+					<a href="http://'.$val2['website'].'" target="_blank"><span><img style="width:150px;" src="http://localhost/htmltopdf/assets/images/icons/web.png"></span></a>
 					</td>
 					</table>
-</div>
 
 
 
@@ -261,7 +259,7 @@ class Htmltopdf_model extends CI_Model
 		
 		$output .= '
 		<tr>
-			<td colspan="2" align="center"><img style="width:600px;" src="http://192.168.60.251/htmltopdf/assets/images/icons/line.jpg"></td>
+			<td colspan="2" align="center"><img style="width:600px;" src="http://localhost/htmltopdf/assets/images/icons/line.jpg"></td>
 		</tr>
 		</table>';
 	}
@@ -269,11 +267,13 @@ class Htmltopdf_model extends CI_Model
 		</main>
 		</body>
 	</html>';
-	//echo $output;
+	// echo $output;
+	// die;
 
 		return $output;
 	
-		//echo $output;
+		// echo $output;
+		// die;
 		
 	}
 	function allusers(){
