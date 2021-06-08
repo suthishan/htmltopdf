@@ -176,7 +176,7 @@ class Admin extends CI_Controller {
 	public function export_csv(){
 	$data['customer_data'] = $this->db->get('tbl_customer')->result();
 	header('Content-type: text/csv');
-      header('Content-Disposition: attachment; filename="mgrdailyloglist.csv"');
+      header('Content-Disposition: attachment; filename="list.csv"');
       header('Pragma: no-cache');
       header('Expires: 0');
       $file = fopen('php://output', 'w');
@@ -186,16 +186,158 @@ class Admin extends CI_Controller {
 
          $k=$k+1;
 		 
-
         $showdata["S.No"]=$k;
         $showdata["Name"]=$data['CustomerName'];
         $showdata["email"]=$data['email'];
        
         
          fputcsv($file, $showdata);
+		// fclose($file);
+	
+
+		 
       }
-     // exit();
+	    
+
+	  
+     
      
 		
 	}
+
+	public function edituserdetails(){
+				$id=$this->uri->segment(3);
+				// echo '<pre>';
+				// print_r($id);
+				// echo '</pre>';
+				// die;
+				$data['details']=$this->Admin_model->edit_userdetails($id);
+				
+
+// 					if(!empty($this->input->post("submit"))){
+
+		
+// 		 $this->form_validation->set_rules('customername','customername','required');
+// 		// $this->form_validation->set_rules('companyname','companyname','required');
+// 		// $this->form_validation->set_rules('companycategory','companycategory','required');
+// 		// $this->form_validation->set_rules('address','address','required');
+// 		// $this->form_validation->set_rules('city','city','required');
+// 		// $this->form_validation->set_rules('pincode','pincode','required');
+// 		// $this->form_validation->set_rules('phone','phone','required');
+// 		// $this->form_validation->set_rules('emailid','emailid','required');
+// 		if ($this->form_validation->run() == TRUE) {
+			
+
+
+			
+		
+					
+// 			$insertdata['CustomerName'] = $this->input->post("customername");
+// 			$insertdata['CompanyName'] = $this->input->post("companyname"); 
+// 			//$insertdata['CompanyLogo'] = 
+// 			$insertdata['spec'] = $this->input->post("companycategory");
+// 		    $insertdata['Address'] = $this->input->post("address");
+// 			$insertdata['City'] = $this->input->post("city");
+// 		    $insertdata['PostalCode'] = $this->input->post("pincode");
+// 			$insertdata['mobile'] = $this->input->post("phone");
+// 			$insertdata['email'] = $this->input->post("emailid");
+// 			$insertdata['website'] = $this->input->post("website");
+// 			$insertdata['fb'] = $this->input->post("fb");
+// 			$insertdata['insta'] = $this->input->post("instragram");
+// 			$insertdata['powerteam'] = $this->input->post("powerteam");
+			
+// 			//$insertdata['spec'] = $this->input->post("spec");
+// // 			echo '<pre>';
+// // 			print_r($_POST);
+// // 			echo '</pre>';
+			
+// // echo '<pre>';
+// // print_r($_FILES);
+// // echo '</pre>';
+// // die;
+// 			if (!empty($_FILES['companylogo']['name'])) {
+//                 $config['upload_path'] = 'uploads/logo/';
+//                 /*add 777 permission to directory*/  
+//                 if (!is_dir($config['upload_path'])) {
+//                     mkdir($config['upload_path'], 0777, TRUE);
+//                 }
+//                 $config['allowed_types'] = 'jpg|jpeg|png|gif';
+//                 $config['max_size'] = 10000000;
+//                 $config['file_name'] = $_FILES['companylogo']['name'];
+
+//                 //Load upload library and initialize configuration
+//                 $this->load->library('upload', $config);
+//                 $this->upload->initialize($config);
+
+//                 if ($this->upload->do_upload('companylogo')) {
+//                     $uploadData = $this->upload->data();
+//                     $picture = $uploadData['file_name'];
+//                 } else {
+//                     $picture = '';
+//                     $error = array('error' => $this->upload->display_errors());
+//                     echo "<script>alert('JPG, JPEG, PNG and GIF type of file only is allowed and atleast 10MB of size');window.location = '" . base_url("index.php/signup") . "';</script>";
+//                 }
+//             } else {
+//                 $picture = '';
+//             }
+// 			if (!empty($_FILES['profileimage']['name'])) {
+//                 $config['upload_path'] = 'uploads/images/';
+//                 /*add 777 permission to directory*/  
+//                 if (!is_dir($config['upload_path'])) {
+//                     mkdir($config['upload_path'], 0777, TRUE);
+//                 }
+//                 $config['allowed_types'] = 'jpg|jpeg|png|gif';
+//                 $config['max_size'] = 10000000;
+//                 $config['file_name'] = $_FILES['profileimage']['name'];
+
+//                 //Load upload library and initialize configuration
+//                 $this->load->library('upload', $config);
+//                 $this->upload->initialize($config);
+
+//                 if ($this->upload->do_upload('profileimage')) {
+//                     $uploadData = $this->upload->data();
+//                     $picture1 = $uploadData['file_name'];
+//                 } else {
+//                     $picture1 = '';
+//                     $error = array('error' => $this->upload->display_errors());
+//                     echo "<script>alert('JPG, JPEG, PNG and GIF type of file only is allowed and atleast 10MB of size');window.location = '" . base_url("index.php/signup") . "';</script>";
+//                 }
+//             } else {
+//                 $picture1 = '';
+//             }
+// 						$insertdata['CompanyLogo'] = $picture;
+// 						$insertdata['images'] = $picture1;
+
+			
+
+// 			$result=$this->Admin_model->update_userdetails($id,$insertdata);
+			
+			
+
+// 			if($result==1){
+// 				$this->session->set_flashdata('message', '<span style="color:green;text-align:center;font-weight:bold;">Added Successfully</span>');
+// 			}else{
+// 				$this->session->set_flashdata('message', 'failed to add');
+// 			}
+// 		}
+
+// 		}else{
+
+// 		}
+		
+		
+// echo '<pre>';
+// print_r($data);
+// echo '</pre>';
+// die;
+	
+	
+				$this->load->view('admin/edituserdetails',$data);
+
+				
+
+
+
+	}
+
 }

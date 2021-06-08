@@ -53,3 +53,6 @@ $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['admin'] = 'Admin/index';
 $route['translate_uri_dashes'] = FALSE;
+
+$route['Admin/export_csv'] = 'Admin/export_csv';
+$route['admin/edituserdetails/(:any)'] = 'Admin/edituserdetails/$1';

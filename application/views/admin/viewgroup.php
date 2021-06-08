@@ -417,8 +417,12 @@
                                                 <td><?php echo $row->email;?></td>
                                                 <td> <?php echo $row->powerteam;?></td>
                                                 <td>
-                                                    <i class="fas fa-eye"></i><i class="fas fa-edit"></i><i
-                                                        class="fas fa-trash-alt"></i>
+                                                    <!-- <i class="fas fa-eye"></i><i class="fas fa-edit"></i><i
+                                                        class="fas fa-trash-alt"></i> -->
+                                                    <a href="edituserdetails/<?php echo $row->CustomerID;?>"
+                                                        data-toggle="tooltip" title="Edit"
+                                                        class="btn btn-danger btn-sm"><i
+                                                            class="fa  fa-pencil-square-o fa-lg"></i></a>
                                                 </td>
 
                                             </tr>

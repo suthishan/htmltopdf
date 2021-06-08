@@ -16,12 +16,52 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+<!-- Crop -->
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js' type='text/javascript'></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.2/croppie.min.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.2/croppie.min.css" />
+<!-- Crop -->
 <body>
     <style type="text/css">
     .badge {
         text-transform: inherit;
         width: 78%;
     }
+
+    #uploaded_image img{
+        border:solid 1px;
+    }
+
+
+
+    .upload-btn-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.btn_crop {
+  border: 1px solid gray;
+  color: gray;
+  background-color: white;
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+      border: dotted 1px;
+}
+
+.upload-btn-wrapper input[type=file] {
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  cursor: pointer;
+}
     </style>
     <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
         <div class="app-header header-shadow">
@@ -324,16 +364,18 @@
                                             <div class="form-row">
                                                 <div class="col-md-4 mb-3">
                                                     <label for="validationCustom06">Upload Company Logo</label>
-                                                    <input type="file" class="form-control" id="validationCustom06"
-                                                        placeholder="Mobile no" name="companylogo" required>
+                                                  <!--   <input type="file" class="form-control" id="validationCustom06"
+                                                        placeholder="Mobile no" name="companylogo" required> -->
+                                                        <input type="file" name="upload_image" id="upload_image" accept="image/*" />
                                                     <div class="invalid-feedback">
                                                         Please provide a valid logo.
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4 mb-3">
                                                     <label for="validationCustom07">Upload Profile image</label>
-                                                    <input type="file" class="form-control" id="validationCustom07"
-                                                        placeholder="Enter email Id" name="profileimage" required>
+                                                    <!-- <input type="file" class="form-control" id="validationCustom07"
+                                                        placeholder="Enter email Id" name="profileimage" required> -->
+                                                        <input type="file" name="uploaded_image_company" id="uploaded_image_company" accept="image/*" />
                                                     <div class="invalid-feedback">
                                                         Please provide a valid profile image.
                                                     </div>
@@ -387,6 +429,20 @@
 
 
 
+
+<div class="col-md-12">
+
+<div class="col-md-6">
+<div id="uploaded_image"></div>
+</div>
+<div class="col-md-6">
+    <div id="uploaded_image_company"></div>
+</div>   
+ 
+
+</div>
+
+
                 </div>
                 <div class="app-wrapper-footer">
                     <div class="app-footer">
@@ -408,7 +464,72 @@
 
         </div>
     </div>
-    <script type="text/javascript" src="./assets/scripts/main.js"></script>
+    <!-- <script type="text/javascript" src="./assets/scripts/main.js"></script> -->
 </body>
+
+
+<!-- image upload -->
+  
+<div id="uploadimageModal" style="display:none" title="Upload & Crop Image">
+ <br />
+ <div style="width:66.67%; float:left">
+  <div id="image_demo" style="width:350px; margin-top:30px"></div>
+ </div>
+ <div style="width:33.33%; float:left">
+  <br />
+    <br />
+    <br/>
+  <button class="btn btn-success crop_image">Crop & Upload Image</button>
+ </div>
+ <div style="clear:both"></div>
+</div>
+
+<script>  
+$(document).ready(function(){
+
+ $image_crop = $('#image_demo').croppie({
+     enableExif: true,
+     viewport: {
+         width: 200,
+         height: 200,
+         type: 'square'
+     },
+     boundary: {
+         width: 300,
+         height: 300
+     }
+ });
+
+ $('#upload_image').on('change', function () { 
+  var reader = new FileReader();
+  reader.onload = function (event) {
+      $image_crop.croppie('bind', {
+       url: event.target.result
+      }).then(function(){
+       console.log('jQuery bind complete');
+      });
+  }
+  reader.readAsDataURL(this.files[0]);
+  $("#uploadimageModal").dialog({width: 600});
+ });
+
+ $('.crop_image').on('click', function (evet) {
+  $image_crop.croppie('result', {
+   type: 'canvas',
+   size: 'viewport'
+  }).then(function (response) {
+   $('#uploadimageModal').dialog( "close" );
+   var html1  = '<img src="'+response+'" />';
+   $('#uploaded_image').html(html1);
+  });
+ });
+
+});  
+</script>
+<!-- image upload -->
+
+
+
+
 
 </html>
