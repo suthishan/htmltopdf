@@ -140,13 +140,13 @@
                             <ul class="vertical-nav-menu">
                                 <li class="app-sidebar__heading">Dashboards</li>
                                 <li>
-                                    <a href="index.html" class="mm-active">
+                                    <a href="<?php echo base_url();?>/admin/dashboard">
                                         <i class="metismenu-icon pe-7s-rocket"></i>
                                         Dashboard
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="">
+                                    <a href="<?php echo base_url();?>/admin/viewgroup" class="mm-active">
                                         <i class="metismenu-icon pe-7s-display2"></i>
                                         
                                      Groups

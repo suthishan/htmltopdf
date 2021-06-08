@@ -11,9 +11,15 @@ class HtmltoPDF extends CI_Controller {
 	}
 
 	public function index()
-	{
+	{	
 		$data['customer_data'] = $this->htmltopdf_model->fetch();
 		$this->load->view('htmltopdf', $data);
+	}
+
+	public function index1()
+	{	$result = $this->htmltopdf_model->allusers();
+		$data['customer_data'] = $this->htmltopdf_model->fetch();
+		echo json_encode($result);
 	}
 
 	public function details()
@@ -55,7 +61,7 @@ class HtmltoPDF extends CI_Controller {
 
 	public function exportallpdfdetails()
 	{
-		// echo "hi";die;
+		//echo "hi";die;
 		//if($this->uri->segment(3))
 		//{
 
@@ -75,15 +81,18 @@ class HtmltoPDF extends CI_Controller {
 			//die;
 			//for($i=0;$i<5;$i++){
 			$html_content = '';
-			$html_content .= $this->htmltopdf_model->newdesign();
-			// $customer_id
-			// echo '<pre>';
-			// print_r($html_content);
-			// echo '</pre>';
-			// die;
-			$this->pdf->set_paper("A4", "portrait");
+			$html_content .= $this->htmltopdf_model->newdesign($customer_id);
+
+		// echo '<pre>';
+		// print_r($html_content);
+		// echo '</pre>';
+		// die;
+			
+			$this->pdf->set_paper("A4", "portrait",'0','0','0');
 			$this->pdf->loadHtml($html_content);
 			$this->pdf->render();
+			   // $this->pdf->SetDisplayMode('fullpage');
+
 			$this->pdf->stream("".$customer_id.".pdf", array("Attachment"=>0));
 			//}
 			

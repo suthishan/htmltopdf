@@ -154,7 +154,6 @@ class Htmltopdf_model extends CI_Model
 
 	$output = '<html>
 		<head>
-
 		<link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
 			<style>
@@ -166,6 +165,9 @@ class Htmltopdf_model extends CI_Model
 					size: 21cm 29.7cm;
 					margin: 0cm 0cm;
 					page-break-after: always;
+				}
+				td{
+					white-space:nowrap;
 				}
 	
 				/**
@@ -222,7 +224,7 @@ class Htmltopdf_model extends CI_Model
 
 				 $row[]=$val2['CustomerID'];
 		$output .= '
-		<table style="width:100%;"  cellspacing="5" cellpadding="5">
+		<table style="width:100%;  margin:auto; " height="33.34%" cellspacing="5" cellpadding="5">
             <tr>
 				<td width="30%" style="">
 				<img style="width: 220px;border-radius: 75px 75px 75px 75px;margin-top: 5px;box-shadow: 0 10px 16px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%) !important;" src="'.base_url().'assets/images/profile/'.$val2['images'].'">
@@ -235,14 +237,10 @@ class Htmltopdf_model extends CI_Model
 					<img style="width: 100px;border-radius: 50%;margin-top: 0px;box-shadow: 0 10px 16px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%) !important;" src="'.base_url().'assets/images/logo/'.$val2['CompanyLogo'].'"></td>
 					<td><span style="color:gray"></span></td>
 					<td> <span style="color:black;font-weight: 400;font-size:20px;">  
-
                   <td style="font-weight:600">'.$val2['spec'].'<br>'.$val2['CompanyName'].'</span></td>
-
-
 					</td>
 					</tr>
 					</table>
-
 					<table>
 					<td>
 					<a href="tel:'.$val2['mobile'].'" target="_blank"><span><img style="width:150px;" src="http://localhost/htmltopdf/assets/images/icons/call.png"></span></a>
@@ -250,16 +248,12 @@ class Htmltopdf_model extends CI_Model
 					<a href="http://'.$val2['website'].'" target="_blank"><span><img style="width:150px;" src="http://localhost/htmltopdf/assets/images/icons/web.png"></span></a>
 					</td>
 					</table>
-
-
-
 				</td>
 			</tr>
        ';
-		
 		$output .= '
 		<tr>
-			<td colspan="2" align="center"><img style="width:600px;" src="http://localhost/htmltopdf/assets/images/icons/line.jpg"></td>
+			<td colspan="2" align="center"><img style="width:400px;" src="http://localhost/htmltopdf/assets/images/icons/line.jpg"></td>
 		</tr>
 		</table>';
 	}
@@ -272,7 +266,7 @@ class Htmltopdf_model extends CI_Model
 
 		return $output;
 	
-		// echo $output;
+		//echo $output;
 		// die;
 		
 	}

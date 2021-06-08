@@ -7,13 +7,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="assets/css/login.css">
+<link rel="stylesheet" href="<?php echo base_url();?>/assets/css/login.css">
 </head>
 <body>
 <section class="ftco-section">
 <div class="container">
 <div class="row justify-content-center">
-
 </div>
 <div class="row justify-content-center">
 <div class="col-md-6 col-lg-5">
@@ -21,27 +20,30 @@
 <div class="icon d-flex align-items-center justify-content-center">
 <span class="fa fa-user-o"></span>
 </div>
-<h3 class="text-center mb-4">Have an account?</h3>
-<form action="#" class="login-form">
+<h3 class="text-center mb-4">Login</h3>
+<form id="SignIn" name="SignIn" class="form-element" method="post">
+<div class="error1" id="err_hide"><?php echo $this->session->flashdata("msg"); ?></div><br>
 <div class="form-group">
-<input type="text" class="form-control rounded-left" placeholder="Username" required>
+<input type="text" class="form-control rounded-left" placeholder="Username" required name="username">
+<label class="error"><?php echo (!empty(form_error('username'))?form_error('username') :" "); ?></label>
 </div>
 <div class="form-group d-flex">
-<input type="password" class="form-control rounded-left" placeholder="Password" required>
+<input type="password" class="form-control rounded-left" placeholder="Password" required name="password">
+<label class="error"><?php echo (!empty(form_error('Password'))?form_error('Password') :" "); ?></label>
 </div>
 <div class="form-group d-md-flex">
-<div class="w-50">
+<!-- <div class="w-50">
 <label class="checkbox-wrap checkbox-primary">Remember Me
 <input type="checkbox" checked>
 <span class="checkmark"></span>
 </label>
-</div>
-<div class="w-50 text-md-right">
+</div> -->
+<!-- <div class="w-50 text-md-right">
 <a href="#">Forgot Password</a>
-</div>
+</div> -->
 </div>
 <div class="form-group">
-<button type="submit" onclick="location.href='http://localhost/htmltopdf/'" class="btn btn-primary rounded submit p-3 px-5">Get Started</button>
+<button type="submit" value="submit" name="btn-submit" class="btn btn-primary rounded submit p-3 px-5">Login</button>
 </div>
 </form>
 </div>
